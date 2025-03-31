@@ -1,17 +1,21 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Fill form from json",
     "version": "21.1217.1328",
     "description": "Fill a form from json",
-    "browser_action": {
+    "default_locale": "en",
+    "action": {
         "default_icon": "icon32.png",
         "default_popup": "popup.html",
         "default_title": "Fill form from json"
     },
     "permissions": [
-        "*://*/*",
+        "storage",
         "activeTab",
-        "storage"
+        "scripting"
+    ],
+    "host_permissions": [
+        "*://*/*"
     ],
     "icons": {
         "16": "icon16.png",

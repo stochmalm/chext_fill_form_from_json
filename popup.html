@@ -1,29 +1,61 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="popup.css">
+    <meta charset="utf-8" />
+    <!-- The <title> becomes the extension's title -->
+    <title data-localize="__MSG_extensionName__">Fill a form from JSON</title>
+    <link rel="stylesheet" href="popup.css" />
 </head>
-
 <body>
-    <h2>Fill a form from json</h2>
-    <h3>Paste the json text:</h3>
-    <textarea id="textarea_json" style="width:93%;height:55%" autofocus></textarea>
-    <br>
-    <button id="button_fill_form_from_json">Fill form from json</button>
-    <h3>Get json from URL:</h3>
-    <input type="text" id="input_fileurl" name="input_fileurl" style="width:93%;margin-bottom:3px" />
-    <br>
-    <button id="button_fill_form_from_url">Fill form from URL</button>
-    <br>
+<header>
+    <h2 data-localize="__MSG_extensionName__">Fill a form from JSON</h2>
+</header>
 
-    <p style="width: 95%;">
-        This extension does not send any data over the network for security and privacy. The extension can access only the active Tab. The source code is published on github and anybody can inspect it to see there is no malicious or dangerous code:
-        <a href="https://github.com/bestia-dev/chext_fill_form_from_json" target="_blank">https://github.com/bestia-dev/chext_fill_form_from_json</a>
-        <br> ver: 21.1217.1123
+<section class="section-block">
+    <label for="textarea_json" class="section-title" data-localize="__MSG_pasteJsonText__">Paste the JSON text:</label>
+    <textarea id="textarea_json" class="json-textarea"></textarea>
+    <button id="button_fill_form_from_json" class="action-button" data-localize="__MSG_fillFormJsonButton__">
+        Fill form from JSON
+    </button>
+</section>
+
+<section class="section-block">
+    <label for="input_fileurl" class="section-title" data-localize="__MSG_getJsonFromUrl__">Get JSON from URL:</label>
+    <input
+            type="text"
+            id="input_fileurl"
+            class="url-input"
+            placeholder="https://example.com/data.json"
+    />
+    <button id="button_fill_form_from_url" class="action-button" data-localize="__MSG_fillFormUrlButton__">
+        Fill form from URL
+    </button>
+</section>
+
+<section class="section-block">
+    <input
+            type="file"
+            id="file_input"
+            accept="application/json"
+            style="display: none;"
+    />
+    <button id="button_pick_file" class="action-button" data-localize="__MSG_pickFileButton__">
+        Pick a File
+    </button>
+</section>
+
+<footer>
+    <p class="privacy-note" data-localize="__MSG_privacyNote__">
+        This extension does not send any data over the network for security and privacy.
+        The extension can access only the active Tab.
+        The source code is published on GitHub and anybody can inspect it to see there is no malicious or dangerous code:
     </p>
     <br>
-    <script src="popup.js"></script>
-</body>
+    <span class="privacy-note" id="app_version">ver: 21.1217.1123</span>
+</footer>
 
+<script src="popup.js"></script>
+<script src="localize.js"></script>
+
+</body>
 </html>

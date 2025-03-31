@@ -1,0 +1,23 @@
+{
+  "extensionName": {
+    "message": "Wypełnij formularz z JSON"
+  },
+  "pasteJsonText": {
+    "message": "Wklej zawartość JSON:"
+  },
+  "fillFormJsonButton": {
+    "message": "Wypełnij z JSON"
+  },
+  "getJsonFromUrl": {
+    "message": "Pobierz JSON z URL:"
+  },
+  "fillFormUrlButton": {
+    "message": "Wypełnij z URL"
+  },
+  "pickFileButton": {
+    "message": "Wybierz plik"
+  },
+  "privacyNote": {
+    "message": "To rozszerzenie nie wysyła żadnych danych przez sieć, zapewniając bezpieczeństwo i prywatność. Ma dostęp tylko do aktywnej karty."
+  }
+}

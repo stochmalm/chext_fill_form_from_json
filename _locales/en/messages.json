@@ -1,0 +1,23 @@
+{
+  "extensionName": {
+    "message": "Fill a Form from JSON"
+  },
+  "pasteJsonText": {
+    "message": "Paste the JSON text:"
+  },
+  "fillFormJsonButton": {
+    "message": "Fill form from JSON"
+  },
+  "getJsonFromUrl": {
+    "message": "Get JSON from URL:"
+  },
+  "fillFormUrlButton": {
+    "message": "Fill form from URL"
+  },
+  "pickFileButton": {
+    "message": "Pick a File"
+  },
+  "privacyNote": {
+    "message": "This extension does not send any data over the network for security and privacy. The extension can access only the active Tab."
+  }
+}

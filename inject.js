@@ -8,7 +8,6 @@ var injected = injected || (function() {
     // we can use from our event script.
     var methods = {};
 
-
     // This tells the script to listen for
     // messages from our extension.
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -16,8 +15,9 @@ var injected = injected || (function() {
         // If the method the extension has requested
         // exists, call it and assign its response
         // to data.
-        if (methods.hasOwnProperty(request.method))
+        if (methods.hasOwnProperty(request.method)) {
             data = methods[request.method]();
+        }
         // Send the response back to our extension.
         sendResponse({ data: data });
         return true;
@@ -45,34 +45,31 @@ var injected = injected || (function() {
 
     function assignValueToInputs(inputName, newText) {
         if (typeof newText === 'string' || typeof newText === 'number') {
-            //input is text, checkbox, radio
+            // Handle inputs
             Array.from(document.querySelectorAll('input')).forEach(el => {
                 if (el.name == inputName || el.getAttribute("ng-reflect-name") == inputName) {
-                    if (el.type == "text" || el.type == "number") {
+                    if (el.type === "text" || el.type === "number") {
                         el.value = newText;
-                    } else if (el.type == "radio") {
+                    } else if (el.type === "radio") {
                         setCheckedValue(el, newText);
-                    } else if (el.type == "checkbox") {
-                        if (newText == "true") {
-                            el.checked = true;
-                        } else {
-                            el.checked = false;
-                        }
+                    } else if (el.type === "checkbox") {
+                        el.checked = (newText.toString().toLowerCase() === "true");
                     }
                 }
             });
+
+            // Handle textareas
             Array.from(document.querySelectorAll('textarea')).forEach(el => {
                 if (el.name == inputName || el.getAttribute("ng-reflect-name") == inputName) {
                     el.value = newText;
                 }
             });
+
+            // Handle selects
             Array.from(document.querySelectorAll('select')).forEach(el => {
                 if (el.name == inputName || el.getAttribute("ng-reflect-name") == inputName) {
-                    var val = newText;
-                    var opts = el.options;
-                    for (var opt, j = 0; opt = opts[j]; j++) {
-                        if (opt.value == val) {
-                            //alert(opt.value);
+                    for (var j = 0; j < el.options.length; j++) {
+                        if (el.options[j].value == newText) {
                             el.selectedIndex = j;
                             break;
                         }
@@ -87,18 +84,14 @@ var injected = injected || (function() {
     // if the given value does not exist, all the radio buttons
     // are reset to unchecked
     function setCheckedValue(radioObj, newValue) {
-        if (!radioObj)
-            return;
+        if (!radioObj) return;
         var radioLength = radioObj.length;
-        if (radioLength == undefined) {
+        if (radioLength === undefined) {
             radioObj.checked = (radioObj.value == newValue.toString());
             return;
         }
         for (var i = 0; i < radioLength; i++) {
-            radioObj[i].checked = false;
-            if (radioObj[i].value == newValue.toString()) {
-                radioObj[i].checked = true;
-            }
+            radioObj[i].checked = (radioObj[i].value == newValue.toString());
         }
     }
 
