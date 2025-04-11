@@ -56,6 +56,7 @@ var injected = injected || (function() {
                         el.checked = (newText.toString().toLowerCase() === "true");
                     }
                 }
+                el?.parentElement?.classList.add('active');
             });
 
             // Handle textareas
@@ -63,6 +64,7 @@ var injected = injected || (function() {
                 if (el.name == inputName || el.getAttribute("ng-reflect-name") == inputName) {
                     el.value = newText;
                 }
+                el?.parentElement?.classList.add('active');
             });
 
             // Handle selects
@@ -75,6 +77,7 @@ var injected = injected || (function() {
                         }
                     }
                 }
+                el?.parentElement?.classList.add('active');
             });
         }
     }

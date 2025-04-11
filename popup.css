@@ -40,7 +40,7 @@ header p {
 .json-textarea {
     width: 100%;
     min-height: 32px;
-    height: 180px;
+    height: 340px;
     resize: vertical;
     box-sizing: border-box;
     margin-bottom: 8px;
